@@ -10,12 +10,18 @@ import { HousingService } from './services/housing.service';
 import { AddPropertyComponent } from './property/add-property/add-property.component';
 import { Routes,RouterModule } from '@angular/router';
 import { PropertyDetailComponent } from './property/property-detail/property-detail.component';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { UserLoginComponent } from './user/user-login/user-login.component';
+import { UserRegisterComponent } from './user/user-register/user-register.component';
 
 const appRoutes : Routes = [
   {path: 'add-property' , component : AddPropertyComponent},
   {path : '', component : PropertyListComponent},
   {path : 'property-detail/:id', component : PropertyDetailComponent},
-  {path : '**', component : PropertyListComponent}
+  {path : 'user/login'  , component : UserLoginComponent},
+  {path : 'user/register'  , component : UserRegisterComponent},
+  {path : '**', component : PropertyListComponent},
+  
 ]
 @NgModule({
   declarations: [
@@ -24,13 +30,17 @@ const appRoutes : Routes = [
     PropertyListComponent,
     NavBarComponent,
     AddPropertyComponent,
-    PropertyDetailComponent
+    PropertyDetailComponent,
+    UserLoginComponent,
+    UserRegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     HousingService
